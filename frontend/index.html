@@ -17,7 +17,7 @@
 <body>
 
 <div class="container">
-    <div class="row">
+    <div class="row" id="row1">
         <div class="row">
             <div class="col-12 text-center">
                 <h1><strong>Control panel</strong></h1>
@@ -28,37 +28,150 @@
         <div class="row">
             <div class="col-3"></div>
             <div class="col-6 text-center">
+                <div class="lights-panel">
+                    <div class="row text-center">
+                        <div class="container">
+                                <div class="container overflow-hidden stupid">
+                                    <div class="row" id="fst-row">
+                                        <div class="col-2 grid-col" id="a"></div>
+                                        <div class="col-2 p-4 grid-col m-2" id="10">10</div>
+                                        <div class="col-2 p-4 grid-col m-2" id="7">7</div>
+                                        <div class="col-2 p-4 grid-col m-2" id="4">4</div>
+                                        <div class="col-2 p-4 grid-col m-2" id="1">1</div>
+                                        <div class="col-2 grid-col" id="b"></div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-12"></div>
+                                    </div>
+                                
+                                    <div class="row">
+                                        <div class="col-2"></div>
+                                        <div class="col-2 p-4 grid-col m-2" id="11">11</div>
+                                        <div class="col-2 p-4 grid-col m-2" id="8">8</div>
+                                        <div class="col-2 p-4 grid-col m-2" id="5">5</div>
+                                        <div class="col-2 p-4 grid-col m-2" id="2">2</div>
+                                        <div class="col-2"></div>
+                                    </div>
+                                
+                                
+                                    <div class="row">
+                                        <div class="col-2"></div>
+                                        <div class="col-2 p-4 grid-col m-2" id="12">12</div>
+                                        <div class="col-2 p-4 grid-col m-2" id="9">9</div>
+                                        <div class="col-2 p-4 grid-col m-2" id="6">6</div>
+                                        <div class="col-2 p-4 grid-col m-2" id="3">3</div>
+                                        <div class="col-2"></div>
+                                    </div>
+                                </div>
+                              </div>
+                    </div>
+                </div>
+                
+
                 <div class="control-panel">
                     <div class="row">
-                        <div class="col-12 p-1">
-                            <button id="flickerButton" type="button" class="btn btn-primary">Flicker</button>
-                            <button type="button" class="btn btn-warning">Flicker</button>
-                            <button type="button" class="btn btn-primary">Flicker</button>
-                            <button type="button" class="btn btn-warning">Flicker</button>
-
+                        <div class="col-12 p-4">
+                            <div class="col-2"></div>
+                            <div class="d-flex justify-content-around">
+                                <button id="brightnessButton" type="button" class="btn btn-primary btn-window">Brightness</button>
+                                <button id="colorButton" type="button" class="btn btn-primary btn-window">Color</button>
+                                <button id="discoButton" type="button" class="btn btn-primary btn-window">Disco mode</button>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12 p-1">
-                            <button type="button" class="btn btn-danger">Disco</button>
-                            <button type="button" class="btn btn-info">Disco</button>
-                            <button type="button" class="btn btn-danger">Disco</button>
-                            <button type="button" class="btn btn-info">Disco</button>
+                        <div class="col-12 p-4">
+                            <div class="d-flex justify-content-around">
+                                <button id="flickerButton" type="button" class="btn btn-primary btn-window">Flicker</button>
+                                <button id="infoButton" type="button" class="btn btn-info btn-window">?</button>
+                                <button id="rainbowButton" type="button" class="btn btn-primary btn-window">Rainbow mode</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-3"></div>
+            <div class="col-3">
+                <div class="modal" id="modal" tabindex="-1">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">Modal title</h5>
+                          <button type="button" class="btn-close" id="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <p>Modal body text goes here.</p>
+                        </div>
+                        <div class="modal-footer">
+                          
+                          <button type="button" id="ok-btn" class="btn btn-primary">Ok</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>                  
+            </div>
         </div>
     </div>
+
 </div>
 
 </body>
 </html>
 
 <style>
+
+#b {
+        border: 3px solid blue;
+    }
+
+    #a {
+        border: 3px solid green;
+    }
+
+    #fst-row {
+        border: 3px solid red;
+    }
+
+    .grid-col {
+        border: 2px solid lightgray;
+        background-color: #ededed;
+        border-radius: 50%;
+        /* max-width: 100px; */
+    }
+
+    .grid-col:hover {
+        background-color: lightgray;
+        border-radius: 50%;
+        cursor: pointer;
+        /* max-width: 100px; */
+    }
+
     .control-panel {
         border: 1px solid black;
-        min-height: 250px;
+        min-height: 220px;
+    }
+
+    .lights-panel {
+        border: 1px solid black;
+        min-height: 230px;
+    }
+
+    .stupid {
+        border: 2px solid black;
+    }
+
+    #row1 {
+        border: 2px solid pink;
+    }
+
+    .grid {
+        /* padding: 50px; */
+        border: 2px solid red;
+    }
+
+    .g-col-6 {
+        border: 1px solid black;
+        min-height: 20px;
+        width: 60px;
     }
 </style>
