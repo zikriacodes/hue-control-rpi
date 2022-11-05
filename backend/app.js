@@ -2,37 +2,37 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser')
-const SSHConnection = require('node-ssh-forward').SSHConnection;
 const jsonParser = bodyParser.json()
 
-const port = 3000;
+var exec = require('child_process').exec;
+
+let interval;
+
+const port = 3001;
 
 app.use(jsonParser);
 
-const runPython = "python3 hue/phue/examples/";
+const runPython = "python3 ../hue/phue/examples/";
 
-app.post('/flicker', (req, res) => {
-    if (!req.body.username || !req.body.password || !req.body.targetIpAddress) {
-        res.status(404);
-        res.send("Failed auth");
-        return;
-    }
+app.post('/api/flicker', (req, res) => {
     try {
-        connectSSH(req.body.username, req.body.password, req.body.targetIpAddress).executeCommand(`${runPython}flicker.py`);
+
+	runFlicker()
         res.send(200);
     } catch (e) {
         res.send(e);
     }
 });
 
+app.delete('/api/stop', (req, res) => {
+	if(interval) clearInterval(interval)
+	res.send(204)
+})
+
 app.listen(port, () => {
     console.log(`Philps api listening on port ${port}`);
 });
 
-function connectSSH(username, password, targetIpAddress) {
-    return new SSHConnection({
-        endHost: targetIpAddress,
-        username: username,
-        password: password
-    });
-};
+async function runFlicker() {
+interval = setInterval( () => {exec(`${runPython}flicker.py`)} ,5000);
+}
